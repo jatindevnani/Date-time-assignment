@@ -1,5 +1,7 @@
 package com.masai;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -7,6 +9,10 @@ public class Main {
         EmployeeBonus eb = new EmployeeBonus();
 
         //Date in format dd-MM-yyyy
-        System.out.println(eb.bonusCalculator("20-13-2023"));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter join date to calculate your bonus (dd-mm-yyyy)");
+        String joinDate = scanner.nextLine();
+
+        System.out.println(eb.bonusCalculator(joinDate));
     }
 }

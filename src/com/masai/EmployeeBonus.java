@@ -14,10 +14,12 @@ public class EmployeeBonus {
             //Returns a date formatter object
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-            //Returns a Local Date object
+            if(!input.matches("^\\d{2}-\\d{2}-\\d{4}")) {
+                throw new InvalidAge("Please pass the date in correct format");
+            }
+
             LocalDate joinedOn = LocalDate.parse(input, formatter);
 
-            //Current date
             LocalDate currentDate = LocalDate.now();
             Period period = null;
             if (currentDate.compareTo(joinedOn) > 0) {
@@ -37,10 +39,7 @@ public class EmployeeBonus {
             }
         } catch (InvalidAge iae) {
             System.out.println(iae.getMessage());
-        } catch (DateTimeParseException formatError) {
-            System.out.println(formatError.getMessage());
         }
-
-        return 0;
+        return -1;
     }
 }
